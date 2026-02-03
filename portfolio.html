@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luke - MyLMS Rewrite</title>
+    <title>Luke - Minimalist Portfolio</title>
     <style>
         :root {
             --bg: #0a0a0a;
@@ -146,56 +146,48 @@
     <main>
         <a href="index.html" class="back-link">← Back to Home</a>
 
-        <h1>MyLMS Rewrite</h1>
-        <p>A high-performance dashboard for Moodle LMS, rebuilt with a Rust API backend and Next.js frontend.</p>
+        <h1>Minimalist Portfolio</h1>
+        <p>A minimal, performance-focused portfolio website built with vanilla HTML and CSS.</p>
 
-        <a href="https://github.com/LukeKappa/mylms-rewrite" target="_blank">View on GitHub</a>
+        <!-- Link to the repo itself if available, or just omit/link to main github -->
+        <a href="https://github.com/LukeKappa/min-portfolio" target="_blank">View on GitHub</a>
 
         <h2>Problem</h2>
         <p>
-            Standard Moodle implementations often suffer from slow navigation, cluttered interfaces, and deeply nested
-            resources.
-            Accessing a single file can require clicking through multiple menu layers, often with significant loading
-            times.
-            Additionally, offline access is typically unreliable or non-existent.
+            Many personal portfolios rely on heavy frameworks for simple static content, resulting in bloated bundles
+            and unnecessary load times. A portfolio should be immediate and accessible, prioritizing content
+            over a complex technology stack.
         </p>
 
         <h2>Solution</h2>
         <p>
-            MyLMS Rewrite decouples the UI from the legacy backend. By reverse-engineering the LMS API,
-            this project creates a read-only dashboard that caches heavily and loads instantly. It surfaces key
-            content—files,
-            assignments, and announcements—in a clean UI. An offline-first architecture ensures materials remain
-            accessible
-            without a network.
+            This project uses semantic HTML5 and modern CSS features to create an interactive experience without
+            client-side JavaScript dependencies. The result is a lightweight, maintainable site with instant load times
+            and optimal SEO.
         </p>
 
         <h2>Features</h2>
 
-        <h3>API-First Architecture</h3>
+        <h3>Core Technologies</h3>
         <ul>
-            <li>Direct API Access — Fetches Pages, Resources, Folders, URLs, and Lessons instantly.</li>
-            <li>N+1 Optimization — Pre-fetches resource maps to eliminate redundant calls.</li>
-            <li>High-Performance Backend — Rust-powered API server.</li>
+            <li>Semantic HTML5 — Structure and accessibility first.</li>
+            <li>Modern CSS3 — CSS custom properties (variables), Flexbox, and CSS Grid.</li>
+            <li>Zero Dependencies — No frameworks, no libraries, no build steps required.</li>
         </ul>
 
-        <h3>Offline-First Design</h3>
+        <h3>Design & Experience</h3>
         <ul>
-            <li>Client-Side Caching — Uses IndexedDB for local content storage.</li>
-            <li>Multi-Layer Caching — Browser, Server, and Redis caching hierarchy.</li>
-            <li>Instant Navigation — Previously visited pages load instantly.</li>
+            <li>Responsive Layout — Fluid design that adapts to any device size.</li>
+            <li>Dark Mode — High contrast, eye-friendly dark theme with vibrant accents.</li>
+            <li>Micro-interactions — Subtle CSS animations and transitions for a premium feel.</li>
         </ul>
 
-        <h3>Clean Reading Experience</h3>
+        <h3>Performance</h3>
         <ul>
-            <li>Distraction-Free UI — Standardized typography.</li>
-            <li>Dark Mode — Native dark mode support.</li>
-            <li>LaTeX Support — Beautiful mathematical equation rendering.</li>
+            <li>Lightweight — The entire site size is minimal, ensuring instant loading.</li>
+            <li>Efficient Animations — Hardware-accelerated CSS animations.</li>
         </ul>
 
-        <h2>Architecture</h2>
-        <img src="images/mylms_architecture.png" alt="MyLMS Architecture"
-            style="width: 100%; border-radius: 4px; margin-bottom: 2rem;">
     </main>
 
 </body>
