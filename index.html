@@ -225,6 +225,10 @@
         <section>
             <h2>Projects</h2>
             <div class="project-list">
+                <a href="wsl.html" class="item">
+                    <span class="title">WSL Raycast Extension</span>
+                    <span class="meta">TypeScript/React</span>
+                </a>
                 <a href="mylms.html" class="item">
                     <span class="title">MyLMS Rewrite</span>
                     <span class="meta">Rust/Next.js</span>
@@ -301,8 +305,8 @@
             <h2>Education</h2>
             <div class="experience-list">
                 <div class="item">
-                    <span class="title">BS in Computer Science</span>
-                    <span class="meta">Eduvos</span>
+                    <span class="title">BSc in Computer Science</span>
+                    <a class="meta" href="https://eduvosmarketing.powerappsportals.com/" target="_blank">Eduvos</a>
                 </div>
                 <div class="item">
                     <span class="title">2nd Year Student</span>
@@ -314,7 +318,14 @@
         <section>
             <h2>Connect</h2>
             <nav class="contact-links">
-                <a href="mailto:hello@example.com">Email</a>
+                <a href="#" id="email-link">Email</a>
+                <script>
+                    const user = 'lukekappa';
+                    const domain = 'duck.com';
+                    const link = document.getElementById('email-link');
+                    link.innerHTML = user + '@' + domain;
+                    link.href = 'mailto:' + user + '@' + domain;
+                </script>
                 <a href="https://github.com/LukeKappa" target="_blank">GitHub</a>
                 <a href="https://www.linkedin.com/in/lukekappa/" target="_blank">LinkedIn</a>
             </nav>
