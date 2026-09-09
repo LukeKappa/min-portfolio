@@ -1,0 +1,41 @@
+# Base Configuration for Zola
+base_url = "https://portfolio.lukekappa.tech"
+title = "Luke - Portfolio"
+description = "Luke Esterhuizen - Computer Science Student portfolio showcasing projects, systems work, and technical skills."
+compile_sass = false
+build_search_index = false
+
+[markdown]
+lazy_async_image = true
+
+[extra]
+author_name = "Luke Esterhuizen"
+role = "Computer Science Student"
+email = "lukekappa@duck.com"
+github = "https://github.com/LukeKappa"
+linkedin = "https://www.linkedin.com/in/lukekappa/"
+cv_url = "https://github.com/LukeKappa/typst-cv/releases/latest/download/lukeEsterhuizenCV.pdf"
+
+# Skills for the marquee
+skills = [
+    "C++",
+    "Object Oriented Programming",
+    "Data Structures & Algorithms",
+    "Database Systems",
+    "Advanced Networking",
+    "Network Security",
+    "Software Design",
+    "Computer Architecture",
+    "Digital Electronics",
+    "Mathematics for Computing",
+    "IT Project Management",
+    "Linux Operating System",
+    "Cloud Technologies",
+    "Artificial Intelligence Ethics"
+]
+
+# Education entries
+education = [
+    { title = "BSc in Computer Science", meta = "Eduvos", url = "https://eduvosmarketing.powerappsportals.com/" },
+    { title = "2nd Year Student", meta = "2025 – 2027" }
+]

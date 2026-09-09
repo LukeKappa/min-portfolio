@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{% if page and page.description %}{{ page.description }}{% elif section and section.description %}{{ section.description }}{% else %}{{ config.description }}{% endif %}">
+    <meta name="theme-color" content="#0a0a0a">
+    <title>{% if page and page.title %}{{ page.title }}{% else %}{{ config.title }}{% endif %}</title>
+    <link rel="icon" type="image/svg+xml" href="{{ get_url(path='images/logo.svg') | safe }}">
+    <link rel="stylesheet" href="{{ get_url(path='style.css') | safe }}">
+</head>
+
+<body>
+    {% block content %}{% endblock content %}
+</body>
+
+</html>

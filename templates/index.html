@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main>
+    <header>
+        <h1>{{ config.extra.author_name }}</h1>
+        <p class="role">{{ config.extra.role }}</p>
+    </header>
+
+    <section>
+        <h2>Projects</h2>
+        <div class="project-list">
+            {% for page in section.pages %}
+                {% if page.extra.kind == "project" %}
+                <a href="{{ page.permalink | safe }}" class="item">
+                    <span class="title">{{ page.title }}</span>
+                    <span class="meta">{{ page.extra.tech }}</span>
+                </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </section>
+
+    <section aria-labelledby="skills-heading">
+        <h2 id="skills-heading">Skills</h2>
+        <div class="skills-wrapper">
+            <div class="skills-track">
+                <div class="skills-group">
+                    {% for skill in config.extra.skills %}
+                    <span class="skill-tag">{{ skill }}</span>
+                    {% endfor %}
+                </div>
+                <!-- Duplicate group for infinite marquee (hidden from screen readers) -->
+                <div class="skills-group" aria-hidden="true">
+                    {% for skill in config.extra.skills %}
+                    <span class="skill-tag">{{ skill }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Education</h2>
+        <div class="experience-list">
+            {% for entry in config.extra.education %}
+            <div class="item">
+                <span class="title">{{ entry.title }}</span>
+                {% if entry.url %}
+                <a class="meta" href="{{ entry.url }}" target="_blank" rel="noopener noreferrer">{{ entry.meta }}</a>
+                {% else %}
+                <span class="meta">{{ entry.meta }}</span>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section>
+        <h2>What I'm Working On</h2>
+        <div class="experience-list">
+            {% for page in section.pages %}
+                {% if page.extra.kind == "article" %}
+                <a href="{{ page.permalink | safe }}" class="item">
+                    <span class="title">{{ page.title }}</span>
+                    <span class="meta">Article &rarr;</span>
+                </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </section>
+
+    <section>
+        <h2>Connect</h2>
+        <nav class="contact-links" aria-label="Social and contact links">
+            <a href="mailto:{{ config.extra.email }}" id="email-link">{{ config.extra.email }}</a>
+            <a href="{{ config.extra.github }}" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="{{ config.extra.linkedin }}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="{{ config.extra.cv_url }}" target="_blank" rel="noopener noreferrer" class="download-link">Download CV</a>
+        </nav>
+    </section>
+</main>
+{% endblock content %}
