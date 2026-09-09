@@ -1,5 +1,5 @@
 # Base Configuration for Zola
-base_url = "https://portfolio.lukekappa.tech"
+base_url = "/"
 title = "Luke - Portfolio"
 description = "Luke Esterhuizen - Computer Science Student portfolio showcasing projects, systems work, and technical skills."
 compile_sass = false

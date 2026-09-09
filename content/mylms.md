@@ -37,4 +37,4 @@ MyLMS Rewrite decouples the UI from the legacy backend. By reverse-engineering t
 - LaTeX Support &mdash; Beautiful mathematical equation rendering.
 
 ## Architecture
-![MyLMS Architecture](images/mylms_architecture.png)
+![MyLMS Architecture](/images/mylms_architecture.png)
