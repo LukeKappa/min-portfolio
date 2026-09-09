@@ -14,8 +14,7 @@ A minimal, performance-focused personal portfolio and technical blog built with 
 ```text
 min-portfolio/
 ├── config.toml           # Site configuration, author info, skills, education
-├── static/               # Direct static assets (CSS, CNAME, images)
-│   ├── CNAME
+├── static/               # Direct static assets (CSS, images)
 │   ├── style.css
 │   └── images/
 ├── templates/            # Tera templates
@@ -26,7 +25,7 @@ min-portfolio/
 └── content/              # Content written in Markdown
     ├── _index.md
     ├── wsl.md
-    ├── mylms.md
+    ├── mylms-downloader.md
     ├── portfolio.md
     ├── self-hosting-phone.md
     └── alpine-linux-phone.md
