@@ -59,8 +59,15 @@ zola build
 
 ## Cloudflare Pages Deployment
 
+### Option A: Standard (Recommended)
 1. **Framework preset**: `Zola`
 2. **Build command**: `zola build`
 3. **Build output directory**: `public`
-4. **Environment variables**:
-   - `ZOLA_VERSION`: `0.23.4` (or your preferred release)
+4. **Environment variables** (in **Settings** > **Environment variables**):
+   - `ZOLA_VERSION`: `0.23.6`
+
+### Option B: Automatic Fallback
+If you prefer not to configure environment variables in the Cloudflare dashboard:
+- **Build command**: `bash build.sh`
+- **Build output directory**: `public`
+*(The `build.sh` script automatically detects the environment and downloads the matching Zola 0.23.6 binary if Cloudflare defaults to a legacy version).*
