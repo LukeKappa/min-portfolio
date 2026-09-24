@@ -1,23 +1,63 @@
 {% extends "base.html" %}
 
 {% block content %}
-<main class="project-content">
-    <a href="/" class="back-link">&larr; Back to Home</a>
-
-    <header class="project-header">
+<article>
+    <div id="heading">
         <h1>{{ page.title }}</h1>
         {% if page.description %}
-        <p class="subtitle">{{ page.description }}</p>
+        <p><small>{{ page.description }}</small></p>
         {% endif %}
-        {% if page.extra.links %}
-        <div class="project-links">
-            {% for link in page.extra.links %}
-            <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer">{{ link.label }} &rarr;</a>
-            {% endfor %}
-        </div>
+        {% if page.extra.tech %}
+        <ul class="tags">
+            {% if page.extra.tech is iterable and page.extra.tech is not string %}
+                {% for t in page.extra.tech %}
+                <li><a class="tag external" href="{{ t.url }}" target="_blank" rel="noopener noreferrer">{{ t.name }}</a></li>
+                {% endfor %}
+            {% else %}
+                <li><span class="tag">{{ page.extra.tech }}</span></li>
+            {% endif %}
+        </ul>
         {% endif %}
-    </header>
+    </div>
+
+    {% if page.extra.links %}
+    <div class="buttons" style="margin-block-start: 1rem; margin-block-end: 2.5rem; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+        {% for link in page.extra.links %}
+        <a class="button colored" href="{{ link.url }}" target="_blank" rel="noopener noreferrer">
+            {{ link.label }} &rarr;
+        </a>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if page.toc and page.toc | length > 0 %}
+    <div id="buttons-container">
+        <details id="toc" class="closable">
+            <summary title="Table of Contents"><i class="icon"></i></summary>
+            <div>
+                <strong class="title">Table of Contents</strong>
+                <div>
+                    <ul>
+                        {% for h1 in page.toc %}
+                        <li>
+                            <a href="{{ h1.permalink | safe }}">{{ h1.title }}</a>
+                            {% if h1.children %}
+                            <ul>
+                                {% for h2 in h1.children %}
+                                <li><a href="{{ h2.permalink | safe }}">{{ h2.title }}</a></li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </details>
+        <a id="go-to-top" href="#top" title="Go to Top"><i class="icon"></i></a>
+    </div>
+    {% endif %}
 
     {{ page.content | safe }}
-</main>
+</article>
 {% endblock content %}

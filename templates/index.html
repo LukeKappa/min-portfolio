@@ -1,83 +1,117 @@
 {% extends "base.html" %}
 
 {% block content %}
-<main>
-    <header>
-        <h1>{{ config.extra.author_name }}</h1>
-        <p class="role">{{ config.extra.role }}</p>
-    </header>
+<div id="heading" class="hero-section">
+    <h1>{{ config.extra.author_name }}</h1>
+    <p class="role"><small>{{ config.extra.role }}</small></p>
+</div>
 
-    <section>
-        <h2>Projects</h2>
-        <div class="project-list">
-            {% for page in section.pages %}
-                {% if page.extra.kind == "project" %}
-                <a href="{{ page.permalink | safe }}" class="item">
-                    <span class="title">{{ page.title }}</span>
-                    <span class="meta">{{ page.extra.tech }}</span>
-                </a>
-                {% endif %}
-            {% endfor %}
-        </div>
-    </section>
+{% if section.content %}
+<div class="bio-content">
+    {{ section.content | safe }}
+</div>
+{% endif %}
 
-    <section aria-labelledby="skills-heading">
-        <h2 id="skills-heading">Skills</h2>
-        <div class="skills-wrapper">
-            <div class="skills-track">
-                <div class="skills-group">
-                    {% for skill in config.extra.skills %}
-                    <span class="skill-tag">{{ skill }}</span>
-                    {% endfor %}
-                </div>
-                <!-- Duplicate group for infinite marquee (hidden from screen readers) -->
-                <div class="skills-group" aria-hidden="true">
-                    {% for skill in config.extra.skills %}
-                    <span class="skill-tag">{{ skill }}</span>
-                    {% endfor %}
-                </div>
+{% set projects_section = get_section(path="projects/_index.md", required=false) %}
+{% if projects_section and projects_section.pages %}
+<section class="portfolio-section">
+    <h2>Projects</h2>
+    <div id="article-list">
+        {% for project in projects_section.pages %}
+        <article>
+            <a href="{{ project.permalink | safe }}"></a>
+            <h3>{{ project.title }}</h3>
+            {% if project.description %}
+            <p>{{ project.description }}</p>
+            {% endif %}
+            <div class="details">
+                <small>
+                    {% if project.extra.tech %}
+                    <ul class="tags">
+                        {% if project.extra.tech is iterable and project.extra.tech is not string %}
+                            {% for t in project.extra.tech %}
+                            <li><a class="tag external" href="{{ t.url }}" target="_blank" rel="noopener noreferrer">{{ t.name }}</a></li>
+                            {% endfor %}
+                        {% else %}
+                            <li><span class="tag">{{ project.extra.tech }}</span></li>
+                        {% endif %}
+                    </ul>
+                    {% endif %}
+                </small>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+
+{% if config.extra.skills %}
+<section class="portfolio-section" aria-labelledby="skills-heading">
+    <h2 id="skills-heading">Skills</h2>
+    <div class="skills-wrapper">
+        <div class="skills-track">
+            <div class="skills-group">
+                {% for skill in config.extra.skills %}
+                <span class="skill-tag">{{ skill }}</span>
+                {% endfor %}
+            </div>
+            <!-- Duplicate group for infinite marquee (hidden from screen readers) -->
+            <div class="skills-group" aria-hidden="true">
+                {% for skill in config.extra.skills %}
+                <span class="skill-tag">{{ skill }}</span>
+                {% endfor %}
             </div>
         </div>
-    </section>
+    </div>
+</section>
+{% endif %}
 
-    <section>
-        <h2>Education</h2>
-        <div class="experience-list">
-            {% for entry in config.extra.education %}
-            <div class="item">
-                <span class="title">{{ entry.title }}</span>
-                {% if entry.url %}
-                <a class="meta" href="{{ entry.url }}" target="_blank" rel="noopener noreferrer">{{ entry.meta }}</a>
-                {% else %}
-                <span class="meta">{{ entry.meta }}</span>
-                {% endif %}
+{% if config.extra.education %}
+<section class="portfolio-section">
+    <h2>Education</h2>
+    <div class="education-list">
+        {% for entry in config.extra.education %}
+        <div class="education-item">
+            <span class="education-title">{{ entry.title }}</span>
+            {% if entry.url %}
+            <a class="education-meta external" href="{{ entry.url }}" target="_blank" rel="noopener noreferrer">{{ entry.meta }}</a>
+            {% else %}
+            <span class="education-meta">{{ entry.meta }}</span>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+
+{% set blog_section = get_section(path="blog/_index.md", required=false) %}
+{% if blog_section and blog_section.pages %}
+<section class="portfolio-section">
+    <h2>What I'm Working On</h2>
+    <div id="article-list">
+        {% for article in blog_section.pages %}
+        <article>
+            <a href="{{ article.permalink | safe }}"></a>
+            <h3>{{ article.title }}</h3>
+            {% if article.description %}
+            <p>{{ article.description }}</p>
+            {% endif %}
+            <div class="details">
+                <small>
+                    {% if article.date %}
+                    <time datetime="{{ article.date | date(format='%Y-%m-%d') }}">
+                        {{ article.date | date(format="%B %d, %Y") }}
+                    </time>
+                    {% endif %}
+                    {% if article.reading_time %}
+                    <span> &bull; </span>
+                    <span>{{ article.reading_time }} min read</span>
+                    {% endif %}
+                </small>
             </div>
-            {% endfor %}
-        </div>
-    </section>
-
-    <section>
-        <h2>What I'm Working On</h2>
-        <div class="experience-list">
-            {% for page in section.pages %}
-                {% if page.extra.kind == "article" %}
-                <a href="{{ page.permalink | safe }}" class="item">
-                    <span class="title">{{ page.title }}</span>
-                    <span class="meta">Article &rarr;</span>
-                </a>
-                {% endif %}
-            {% endfor %}
-        </div>
-    </section>
-
-    <section>
-        <h2>Connect</h2>
-        <nav class="contact-links" aria-label="Social and contact links">
-            <a href="mailto:{{ config.extra.email }}" id="email-link">{{ config.extra.email }}</a>
-            <a href="{{ config.extra.github }}" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a href="{{ config.extra.linkedin }}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a href="{{ config.extra.cv_url }}" target="_blank" rel="noopener noreferrer" class="download-link">Download CV</a>
-        </nav>
-    </section>
-</main>
+        </article>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
 {% endblock content %}

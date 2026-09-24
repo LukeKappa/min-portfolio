@@ -3,11 +3,17 @@ title = "MyLMS Downloader"
 description = "A Chrome extension for Eduvos MyLMS that automates downloading and organizing course materials into structured folders."
 template = "project.html"
 weight = 2
-aliases = ["pdfdownloadmylms.html", "mylms.html"]
+aliases = ["pdfdownloadmylms.html", "mylms.html", "mylms-downloader.html", "mylms-downloader", "mylms-downloader/"]
+
+[taxonomies]
+tags = ["JavaScript", "Chrome Extension", "Moodle"]
 
 [extra]
 kind = "project"
-tech = "JavaScript / Chrome Extension"
+tech = [
+    { name = "JavaScript", url = "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+    { name = "Chrome Extension", url = "https://developer.chrome.com/docs/extensions/" }
+]
 links = [
     { label = "GitHub", url = "https://github.com/LukeKappa/pdfdownloadmylms" },
     { label = "Video Guide", url = "https://youtu.be/HpzUhBMyyl4" }

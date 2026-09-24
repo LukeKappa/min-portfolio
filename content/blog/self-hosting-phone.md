@@ -3,8 +3,10 @@ title = "Self Hosting on an old phone"
 description = "Repurposing an older Android device to act as a lightweight, low-power server."
 date = 2026-05-01
 template = "article.html"
-weight = 10
-aliases = ["self-hosting-phone.html"]
+aliases = ["self-hosting-phone.html", "self-hosting-phone", "self-hosting-phone/"]
+
+[taxonomies]
+tags = ["Self-Hosting", "Linux", "Server", "Hardware"]
 
 [extra]
 kind = "article"

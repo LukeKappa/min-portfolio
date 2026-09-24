@@ -3,11 +3,17 @@ title = "WSL Raycast Extension"
 description = "A powerful Raycast extension to control and manage your Windows Subsystem for Linux distributions."
 template = "project.html"
 weight = 1
-aliases = ["wsl.html"]
+aliases = ["wsl.html", "wsl", "wsl/"]
+
+[taxonomies]
+tags = ["TypeScript", "React", "Raycast", "WSL"]
 
 [extra]
 kind = "project"
-tech = "TypeScript / React"
+tech = [
+    { name = "TypeScript", url = "https://www.typescriptlang.org/" },
+    { name = "React", url = "https://react.dev/" }
+]
 links = [
     { label = "GitHub", url = "https://github.com/raycast/extensions/tree/main/extensions/wsl-manager" },
     { label = "Raycast Store", url = "https://www.raycast.com/luke_esterhuizen/wsl-manager" }

@@ -1,0 +1,120 @@
+{%- if config.extra.nav?.auto_hide %}
+	<div id="handle"></div>
+{%- endif %}
+<header id="site-nav">
+	<nav>
+		<a href="#main-content" tabindex="0">
+			{{ <translate key="skip_to_content" default="Skip to Main Content" language_strings /> }}
+		</a>
+		<ul>
+			<li id="home">
+				<a href="{{ get_url(path='/', lang=lang) }}"
+					class="circle{% if current_url | default(value='/') | trim_end(pat='/') | safe == get_url(path='/', lang=lang) | trim_end(pat='/') | safe %} active{% endif %}"
+					title="Home">
+					<i class="icon"></i>
+				</a>
+			</li>
+			<li class="divider"></li>
+			{%- for link in config.extra.nav?.links %}
+				{%- if link.menu and link.menu | length > 0 -%}
+					<li>
+						<details class="closable">
+							<summary>{{- <translate key={link.name} default={link.name} language_strings /> -}}</summary>
+							<ul>
+								{%- for link in link.menu -%}
+									{%- if link.url is matching(pat='^https?://') %}
+										<li>
+											<a href="{{ link.url }}" rel="{{ rel_attributes }}" class="external">
+												{{- <translate key={link.name} default={link.name} language_strings /> -}}
+											</a>
+										</li>
+									{%- else %}
+										<li>
+											<a href="{{ get_url(path=link.url, lang=lang)}}"
+												{%- if current_url | default(value='/') | trim_end(pat='/') | safe == get_url(path=link.url, lang=lang) | trim_end(pat='/') | safe -%}
+													class="active"
+												{%- endif -%}>
+												{{- <translate key={link.name} default={link.name} language_strings /> -}}
+											</a>
+										</li>
+									{%- endif %}
+								{%- endfor -%}
+							</ul>
+						</details>
+			 		 </li>
+				{%- elif link.url is matching(pat='^https?://') %}
+					<li>
+						<a href="{{ link.url }}" rel="{{ rel_attributes }}" class="external">
+							{{- <translate key={link.name} default={link.name} language_strings /> -}}
+						</a>
+					</li>
+				{%- else %}
+					<li>
+						<a href="{{ get_url(path=link.url, lang=lang)}}"
+							{%- if current_url | default(value='/') | trim_end(pat='/') | safe == get_url(path=link.url, lang=lang) | trim_end(pat='/') | safe -%}
+								class="active"
+							{%- endif -%}>
+							{{- <translate key={link.name} default={link.name} language_strings /> -}}
+						</a>
+					</li>
+				{%- endif %}
+			{%- endfor -%}
+			{%- if config.build_search_index %}
+				<li id="search">
+					<button id="search-toggle" class="search-pill-btn" title="Search (Ctrl+K)">
+						<i class="icon"></i>
+						<span class="search-pill-label">Search…</span>
+						<kbd class="search-pill-shortcut" id="search-shortcut-badge">Ctrl K</kbd>
+					</button>
+				</li>
+			{%- endif %}
+			{%- if config.languages | length > 0 %}
+				{%- include "partials/language_switcher.html" %}
+			{%- endif -%}
+			{%- if config.extra?.default_theme and config.extra.nav?.show_theme_switcher != false or config.extra.nav?.show_theme_switcher %}
+				<li id="theme-switcher">
+					<details class="closable">
+						<summary class="circle" title="{{ <translate key="theme" default="Theme" language_strings /> }}">
+							<i class="icon"></i>
+						</summary>
+						<ul>
+							<li>
+								<button class="circle" id="theme-light" title="{{ <translate key="theme_light" default="Switch to Light Theme" language_strings /> }}">
+									<i class="icon"></i>
+								</button>
+							</li>
+							<li>
+								<button class="circle" id="theme-dark" title="{{ <translate key="theme_dark" default="Switch to Dark Theme" language_strings /> }}">
+									<i class="icon"></i>
+								</button>
+							</li>
+							<li>
+								<button class="circle" id="theme-system" title="{{ <translate key="theme_system" default="Use System Theme" language_strings /> }}">
+									<i class="icon"></i>
+								</button>
+							</li>
+						</ul>
+					</details>
+				</li>
+			{%- endif %}
+			{%- if config.extra.github or config.extra?.source_url %}
+				<li id="repo">
+					<a class="circle external" href="{{ config.extra.github | default(value=config.extra.source_url) }}" title="GitHub" rel="noopener noreferrer">
+						<i class="icon"></i>
+					</a>
+				</li>
+			{%- endif %}
+		</ul>
+	</nav>
+	{%- if config.build_search_index %}
+		<div id="search-container">
+			<label for="search-bar" class="visually-hidden">
+				{{- <translate key="search" default="Search" language_strings /> -}}
+			</label>
+			<input id="search-bar" placeholder="{{ <translate key="search_for" default="Search for" language_strings /> }}…" autocomplete="off" type="search" disabled>
+			<div id="search-results-container">
+				<div id="search-results"></div>
+			</div>
+		</div>
+	{%- endif %}
+</header>

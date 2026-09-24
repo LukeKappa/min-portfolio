@@ -1,20 +1,55 @@
-# Base Configuration for Zola
+# Base Configuration for Zola with Duckquill
 base_url = "/"
 title = "Luke - Portfolio"
 description = "Luke Esterhuizen - Computer Science Student portfolio showcasing projects, systems work, and technical skills."
-compile_sass = false
-build_search_index = false
+theme = "duckquill"
+
+compile_sass = true
+build_search_index = true
+generate_feeds = true
+feed_filenames = ["rss.xml", "atom.xml"]
+default_language = "en"
+taxonomies = [{ name = "tags", feed = true }]
 
 [markdown]
+smart_punctuation = true
+bottom_footnotes = true
+github_alerts = true
 lazy_async_image = true
+
+[markdown.highlighting]
+light_theme = "solarized-light"
+dark_theme = "solarized-dark"
+style = "class"
+error_on_missing_language = false
+
+[search]
+index_format = "fuse_json"
 
 [extra]
 author_name = "Luke Esterhuizen"
+author = "Luke Esterhuizen"
 role = "Computer Science Student"
 email = "lukekappa@duck.com"
 github = "https://github.com/LukeKappa"
 linkedin = "https://www.linkedin.com/in/lukekappa/"
 cv_url = "https://github.com/LukeKappa/typst-cv/releases/latest/download/lukeEsterhuizenCV.pdf"
+
+# Theme configuration
+default_theme = "dark"
+accent_color = "#27272a"
+accent_color_dark = "#ededed"
+# Feature toggles
+show_copy_button = true
+show_reading_time = true
+show_share_button = true
+show_backlinks = true
+
+# Additional custom stylesheet
+styles = ["custom.css"]
+
+# Source repository
+source_url = "https://github.com/LukeKappa"
 
 # Skills for the marquee
 skills = [
@@ -39,3 +74,23 @@ education = [
     { title = "BSc in Computer Science", meta = "Eduvos", url = "https://eduvosmarketing.powerappsportals.com/" },
     { title = "2nd Year Student", meta = "2025 – 2027" }
 ]
+
+[extra.nav]
+show_feed = false
+show_theme_switcher = true
+show_repo = true
+links = [
+    { url = "projects", name = "Projects" },
+    { url = "blog", name = "Articles" },
+    { url = "https://github.com/LukeKappa/typst-cv/releases/latest/download/lukeEsterhuizenCV.pdf", name = "CV" }
+]
+
+[extra.footer]
+socials = [
+    { url = "https://github.com/LukeKappa", name = "GitHub", icon = "%3Csvg role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Ctitle%3EGitHub%3C/title%3E%3Cpath d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 1.82 0 .428-.015.772-.032 1.028-.088 1.354-.627 2.072-1.604 2.146-1.272.097-2.738.084-4.394.084-1.656 0-3.122.013-4.394-.084-.977-.074-1.516-.792-1.604-2.146-.017-.256-.032-.6-.032-1.028 0-.724.39-1.46.81-1.82.47-.405.86-1.14 1.28-1.745z'/%3E%3C/svg%3E" },
+    { url = "https://www.linkedin.com/in/lukekappa/", name = "LinkedIn", icon = "%3Csvg%20role%3D%27img%27%20viewBox%3D%270%200%2024%2024%27%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%3E%3Ctitle%3ELinkedIn%3C/title%3E%3Cpath%20d%3D%27M19%200h-14c-2.761%200-5%202.239-5%205v14c0%202.761%202.239%205%205%205h14c2.762%200%205-2.239%205-5v-14c0-2.761-2.238-5-5-5zm-11%2019h-3v-11h3v11zm-1.5-12.268c-.966%200-1.75-.79-1.75-1.764s.784-1.764%201.75-1.764%201.75.79%201.75%201.764-.783%201.764-1.75%201.764zm13.5%2012.268h-3v-5.604c0-3.368-4-3.113-4%200v5.604h-3v-11h3v1.765c1.396-2.586%207-2.777%207%202.476v6.759z%27/%3E%3C/svg%3E" },
+    { url = "mailto:lukekappa@duck.com", name = "Email", icon = "%3Csvg%20role%3D%27img%27%20viewBox%3D%270%200%2024%2024%27%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%3E%3Ctitle%3EEmail%3C/title%3E%3Cpath%20d%3D%27M20%204H4c-1.1%200-1.99.9-1.99%202L2%2018c0%201.1.9%202%202%202h16c1.1%200%202-.9%202-2V6c0-1.1-.9-2-2-2zm0%204l-8%205-8-5V6l8%205%208-5v2z%27/%3E%3C/svg%3E" },
+    { url = "https://github.com/LukeKappa/typst-cv/releases/latest/download/lukeEsterhuizenCV.pdf", name = "CV", icon = "%3Csvg%20role%3D%27img%27%20viewBox%3D%270%200%2024%2024%27%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%3E%3Ctitle%3ECV%3C/title%3E%3Cpath%20d%3D%27M14%202H6c-1.1%200-1.99.9-1.99%202L4%2020c0%201.1.89%202%201.99%202H18c1.1%200%202-.9%202-2V8l-6-6zm2%2016H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5%209H13z%27/%3E%3C/svg%3E" }
+]
+show_copyright = true
+show_powered_by = true
