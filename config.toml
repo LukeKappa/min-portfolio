@@ -47,6 +47,7 @@ show_backlinks = true
 
 # Additional custom stylesheet
 styles = ["custom.css"]
+scripts = ["donut.js"]
 
 # Source repository
 source_url = "https://github.com/LukeKappa"

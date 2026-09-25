@@ -824,3 +824,29 @@ main,
     }
 }
 
+
+/* --------------------------------------------------------------------------
+   CRT Monitor Centering
+   -------------------------------------------------------------------------- */
+.crt {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin-inline: auto !important;
+}
+
+.crt pre {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+    padding: 1.25rem 1rem !important;
+}
+
+.crt pre code {
+    display: inline-block !important;
+    text-align: left !important;
+    margin: 0 auto !important;
+}
