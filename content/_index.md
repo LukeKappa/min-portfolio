@@ -2,4 +2,15 @@
 title = "Home"
 sort_by = "weight"
 +++
-Computer Science student focusing on systems programming, Linux, and performance-driven software.
+
+{% <crt> %}
+```
+            _                                 _
+          -=\(o)>           _               -=\(o)>
+             //\          -=\(o)>              //\
+                             //\
+  ~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~
+   _.~"~._.~"~._.~"~._.~"~._.~"~._.~"~._.~"~._.~"~._.~"~
+  ~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~
+```
+{% </crt> %}

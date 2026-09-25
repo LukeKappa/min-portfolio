@@ -1,16 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% if section.content %}
+{{ section.content | safe }}
+{% endif %}
+
 <div id="heading" class="hero-section">
     <h1>{{ config.extra.author_name }}</h1>
     <p class="role"><small>{{ config.extra.role }}</small></p>
+    <div class="bio-content">
+        <p>Computer Science student focusing on systems programming, Linux, and performance-driven software.</p>
+    </div>
 </div>
-
-{% if section.content %}
-<div class="bio-content">
-    {{ section.content | safe }}
-</div>
-{% endif %}
 
 {% set projects_section = get_section(path="projects/_index.md", required=false) %}
 {% if projects_section and projects_section.pages %}
