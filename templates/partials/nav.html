@@ -8,8 +8,8 @@
 		</a>
 		<ul>
 			<li id="home">
-				<a href="{{ get_url(path='/', lang=lang) }}"
-					class="circle{% if current_url | default(value='/') | trim_end(pat='/') | safe == get_url(path='/', lang=lang) | trim_end(pat='/') | safe %} active{% endif %}"
+				<a href="/"
+					class="circle{% if current_url | default(value='/') == '/' or current_url | default(value='/') | trim_end(pat='/') | safe == '' %} active{% endif %}"
 					title="Home">
 					<i class="icon"></i>
 				</a>
